@@ -16,13 +16,13 @@ export function QuemSomos() {
               se fosse nosso: com calma, atenção e aquele carinho de quem entende que seu melhor
               amigo é parte da família.
             </p>
-            <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-12 text-pretty text-lg leading-relaxed text-muted-foreground ">
               Sem correria e sem linha de produção — aqui o atendimento é próximo, personalizado e
               feito no ritmo de cada animal.
             </p>
           </div>
 
-          <div className="grid gap-4">
+          <div className="flex flex-col justify-between gap-4">
             <div className="glow-border-green flex items-center gap-4 rounded-2xl bg-card p-5">
               <Users className="h-8 w-8 shrink-0 text-neon-green" />
               <div>

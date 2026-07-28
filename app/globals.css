@@ -4,6 +4,18 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@property --border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes spin-border {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
 @theme inline {
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -191,14 +203,51 @@
   }
   /* Borda com brilho magenta */
   .glow-border-magenta {
-    box-shadow:
-      0 0 0 1px color-mix(in oklch, var(--neon-magenta) 60%, transparent),
-      0 0 16px color-mix(in oklch, var(--neon-magenta) 30%, transparent);
+    position: relative;
+    box-shadow: 0 0 16px color-mix(in oklch, var(--neon-magenta) 30%, transparent);
   }
   /* Borda com brilho verde */
   .glow-border-green {
-    box-shadow:
-      0 0 0 1px color-mix(in oklch, var(--neon-green) 60%, transparent),
-      0 0 16px color-mix(in oklch, var(--neon-green) 30%, transparent);
+    position: relative;
+    box-shadow: 0 0 16px color-mix(in oklch, var(--neon-green) 30%, transparent);
+  }
+  /* Anel giratório "vivo" por cima do brilho estático */
+  .glow-border-magenta::before,
+  .glow-border-green::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    padding: 1.5px;
+    pointer-events: none;
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: spin-border 5s linear infinite;
+  }
+  .glow-border-magenta::before {
+    background: conic-gradient(
+      from var(--border-angle),
+      var(--neon-magenta),
+      color-mix(in oklch, var(--neon-green) 80%, transparent),
+      var(--neon-magenta)
+    );
+  }
+  .glow-border-green::before {
+    background: conic-gradient(
+      from var(--border-angle),
+      var(--neon-green),
+      color-mix(in oklch, var(--neon-magenta) 80%, transparent),
+      var(--neon-green)
+    );
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .glow-border-magenta::before,
+    .glow-border-green::before {
+      animation: none;
+    }
   }
 }

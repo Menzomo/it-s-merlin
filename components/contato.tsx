@@ -14,8 +14,8 @@ export function Contato() {
           Chama a gente no WhatsApp e garanta o horário do seu melhor amigo. É rapidinho!
         </p>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          <div className="flex flex-col gap-4">
+        <div className="mt-10 grid gap-7 md:grid-cols-2">
+          <div className="flex flex-col gap-6">
             <a
               href={WHATSAPP_URL}
               target="_blank"
@@ -26,7 +26,7 @@ export function Contato() {
               (54) 99642-4914
             </a>
 
-            <div className="glow-border-green flex items-start gap-4 rounded-2xl bg-card p-6">
+            <div className="glow-border-green flex items-start gap-4 rounded-2xl bg-card p-6 mt-10">
               <MapPin className="mt-1 h-6 w-6 shrink-0 text-neon-green" />
               <div>
                 <h3 className="font-bold text-foreground">Onde estamos</h3>

@@ -18,7 +18,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
+      <div className="mx-auto grid max-w-6xl grid-cols-[auto_1fr_auto] items-center gap-4 px-4 py-3">
         <a href="#top" className="flex items-center gap-3">
           <Image
             src="/images/logo-merlin.png"
@@ -34,7 +34,7 @@ export function SiteHeader() {
           </span>
         </a>
 
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="hidden items-center justify-center gap-9 md:flex">
           {links.map((l) => (
             <a
               key={l.href}
@@ -44,25 +44,28 @@ export function SiteHeader() {
               {l.label}
             </a>
           ))}
+        </nav>
+
+        <div className="flex items-center justify-end gap-3">
           <a
             href="https://wa.me/5554996424914"
             target="_blank"
             rel="noopener noreferrer"
-            className="glow-border-magenta rounded-full bg-primary px-4 py-2 text-sm font-bold text-primary-foreground transition-transform hover:scale-105"
+            className="glow-border-magenta hidden rounded-full bg-primary px-4 py-2 text-sm font-bold text-primary-foreground transition-transform hover:scale-105 md:inline-flex"
           >
             WhatsApp
           </a>
-        </nav>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="text-foreground md:hidden"
-          aria-label={open ? 'Fechar menu' : 'Abrir menu'}
-          aria-expanded={open}
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="text-foreground md:hidden"
+            aria-label={open ? 'Fechar menu' : 'Abrir menu'}
+            aria-expanded={open}
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </div>
 
       <div
